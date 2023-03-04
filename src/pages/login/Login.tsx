@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "@/assets/react.svg";
 import "./login.css";
+import LoginForm from "@/components/login/LoginForm";
 
 export default function Login() {
   return (
@@ -8,6 +9,7 @@ export default function Login() {
       <header className="logo">
         <img src={Logo} alt="my login image" />
       </header>
+      <LoginForm />
     </section>
   );
 }
