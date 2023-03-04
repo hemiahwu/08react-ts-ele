@@ -1,0 +1,81 @@
+/* Login.tsx */
+.login-component {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.login-component .logo {
+  text-align: center;
+}
+
+.login-component .logo img {
+  width: 150px;
+}
+
+.login-component .input-group,
+.login-component .login-des,
+.login-component .login-btn {
+  margin-top: 20px;
+}
+
+.login-component .login-des {
+  color: #aaa;
+  line-height: 22px;
+}
+
+.login-component .login-des span {
+  color: #4d90fe;
+}
+
+.login-component .login-btn button {
+  width: 100%;
+  height: 40px;
+  background-color: #48ca38;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  border: none;
+  outline: none;
+}
+
+.login-component .login-btn button[disabled] {
+  background-color: #8bda81;
+}
+
+.login-component .input-group {
+  border: 1px solid #ccc;
+
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.login-component .input-group input {
+  height: 100%;
+  width: 60%;
+  outline: none;
+}
+
+.login-component .input-group button {
+  border: none;
+  outline: none;
+  background: #fff;
+}
+
+.login-component .input-group button[disabled] {
+  color: #aaa;
+}
+
+.login-component .is-invalid {
+  border: 1px solid red;
+}
+
+.login-component .invalid-feedback {
+  color: red;
+  padding-top: 5px;
+}
