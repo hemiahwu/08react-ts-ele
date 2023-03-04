@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
 export default function LoginForm() {
-  const [phone, setPhone] = useState<number>();
-  const [verifyCode, setVerifyCode] = useState<number>();
+  const [phone, setPhone] = useState<string>();
+  const [verifyCode, setVerifyCode] = useState<string>();
   const [invalid, setInvalid] = useState<boolean>(false);
 
-  const handleSubimit = () => {};
-  const handlePhoneChange = () => {};
+  const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPhone((e.target as HTMLInputElement).value);
+  };
+
+  const handleVerifyCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setVerifyCode((e.target as HTMLInputElement).value);
+  };
+
+  // 获取验证码
   const handleGetVerifyCode = () => {};
-  const handleVerifyCodeChange = () => {};
+
+  // 登录操作
+  const handleSubimit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <form onSubmit={handleSubimit} className="login-form">
