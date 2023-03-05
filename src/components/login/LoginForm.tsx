@@ -45,8 +45,22 @@ export default function LoginForm() {
   };
 
   // 登录操作
-  const handleSubimit = (e: ChangeEvent<HTMLFormElement>) => {
+  const handleSubimit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (phone && verifyCode) {
+      try {
+        const response = await axios.post(
+          "https://www.thenewstep.cn/backend/8000/api/posts/sms_back",
+          { phone, code: verifyCode }
+        );
+        toast.success(response.data.msg);
+      } catch (error: any) {
+        toast.error(error.message);
+      }
+    } else {
+      setInvalid(true);
+      setErrorMsg("手机号或验证码不能为空");
+    }
   };
 
   return (
@@ -75,7 +89,7 @@ export default function LoginForm() {
         </div>
         {invalid && <div className="invalid-feedback">{errorMsg}</div>}
         <div className="login-btn">
-          <button>登录</button>
+          <button type="submit">登录</button>
         </div>
       </form>
       <div className="login-des">
