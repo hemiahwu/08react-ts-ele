@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginForm() {
   const [phone, setPhone] = useState<string>("");
@@ -31,7 +33,11 @@ export default function LoginForm() {
       // 069183
       console.log(response);
       if (response.data.msg === "OK") {
-        console.log("短信发送成功,请查收验证码");
+        toast.success("短信发送成功,请查收验证码");
+      } else {
+        const digits = response.data.msg.match(/\d+/g)?.join("");
+        setVerifyCode(digits);
+        toast.success(response.data.msg);
       }
     } catch (error) {
       console.log(error);
@@ -78,6 +84,7 @@ export default function LoginForm() {
           <span>《用户服务协议》</span>
         </p>
       </div>
+      <ToastContainer position="top-center" />
     </>
   );
 }
