@@ -1,9 +1,11 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
 
 export default function LoginForm() {
-  const [phone, setPhone] = useState<string>();
-  const [verifyCode, setVerifyCode] = useState<string>();
+  const [phone, setPhone] = useState<string>("");
+  const [verifyCode, setVerifyCode] = useState<string>("");
   const [invalid, setInvalid] = useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPhone((e.target as HTMLInputElement).value);
@@ -14,7 +16,27 @@ export default function LoginForm() {
   };
 
   // 获取验证码
-  const handleGetVerifyCode = () => {};
+  const handleGetVerifyCode = async () => {
+    if (!phone) {
+      setInvalid(true);
+      setErrorMsg("手机号不能为空");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "https://www.thenewstep.cn/backend/8000/api/posts/sms_send",
+        { phone }
+      );
+      // 069183
+      console.log(response);
+      if (response.data.msg === "OK") {
+        console.log("短信发送成功,请查收验证码");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // 登录操作
   const handleSubimit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -45,7 +67,7 @@ export default function LoginForm() {
             onChange={handleVerifyCodeChange}
           />
         </div>
-        {invalid && <div className="invalid-feedback">报错信息</div>}
+        {invalid && <div className="invalid-feedback">{errorMsg}</div>}
         <div className="login-btn">
           <button>登录</button>
         </div>
