@@ -1,6 +1,16 @@
-# React-TS-login
+# 08-React-TS-login
 
-## 1. 创建项目
+## 第一章 课程代码
+
+Git仓库地址: https://github.com/hemiahwu/08react-ts-ele
+
+百度网盘链接: https://pan.baidu.com/s/15rT8Ayc62h_hGdKcu4OFRg?pwd=e6by 提取码: e6by
+
+
+
+课程答疑微信: 
+
+<img src="https://i.postimg.cc/YCWHJWTw/Wechat-IMG233.jpg" alt="WechatIMG233"  />
 
 ### 1. 创建项目
 
